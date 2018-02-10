@@ -1,0 +1,8 @@
+image: debian:sid
+
+before_script:
+  - echo "deb-src http://deb.debian.org/debian sid main" >> /etc/apt/sources.list &&  apt update -qq && apt build-dep -y -qq xfonts-efont-unicode && apt install -y -qq dpkg-dev
+
+build:
+  script:
+    - dpkg-buildpackage -us -uc -A
