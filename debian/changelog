@@ -1,3 +1,9 @@
+xfonts-efont-unicode (0.4.2-11bb1) focal; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Tue, 05 Jan 2021 17:45:39 +0100
+
 xfonts-efont-unicode (0.4.2-11) unstable; urgency=medium
 
   * debian/control
