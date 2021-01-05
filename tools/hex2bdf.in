@@ -14,7 +14,7 @@ $ascent = $pxlsz_y-2;
 
 
 while (<>) { $glyph{$1} = $2 if /(.{4,}):(.+)\n/; }
-@chars = sort keys %glyph; $[ = 1;
+@chars = sort keys %glyph;
 #dbmopen (%charname, "/usr/share/unicode/unidata/charname.db", 0);
 
 print "STARTFONT 2.1\n";
@@ -33,6 +33,9 @@ if ($pxlsz_x == $pxlsz_y) {
   $family_name = "Fixed";
   $default_char = 0x0020; # SPACE
 }
+
+$number_of_chars = @chars;
+
 print "SIZE $pxlsz_y 75 75
 FONTBOUNDINGBOX $pxlsz_x $pxlsz_y 0 -2
 STARTPROPERTIES 18
@@ -55,7 +58,7 @@ FONT_ASCENT $ascent
 FONT_DESCENT 2
 DEFAULT_CHAR $default_char
 ENDPROPERTIES
-CHARS $#chars\n";
+CHARS $number_of_chars\n";
 
 foreach $character (@chars) {
   $encoding = hex($character); $glyph = $glyph{$character};
